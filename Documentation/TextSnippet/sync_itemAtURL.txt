@@ -1,0 +1,12 @@
+NSString* url = @"https://raw.githubusercontent.com/m1a7/DemoJSONsForNetworkLayer/master/LoremIpsum.txt";
+
+RXWC_CompletionBlockStruct dataStruct =
+[RXWC_RIO sync_itemAtURL:url params:nil expirePeriod:RXWC_OneHourTerm options:0 progress:nil];
+
+if (dataStruct.error){
+    NSLog(@"dataStruct.error: %@",dataStruct.error);
+}else if (dataStruct.item.receivedData.length > 0){
+    
+    NSString* result = [[NSString alloc] initWithData:dataStruct.item.receivedData encoding:NSUTF8StringEncoding];
+    NSLog(@"result: %@",result);
+}

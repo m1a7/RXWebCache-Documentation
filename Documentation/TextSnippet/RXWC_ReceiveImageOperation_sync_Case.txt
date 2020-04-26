@@ -1,0 +1,19 @@
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    // Perform sync operation on background GCD queue
+
+    NSString* url1 = @"https://sun9-20.userapi.com/c543109/v543109246/5a3d3/d65h8OaQx8w.jpg";
+    NSString* url2 = @"https://sun6-2.userapi.com/c850728/v850728132/14fb0d/E4Ks-pnJ8iY.jpg";
+
+    RXWC_ImageViewOptions options = 
+	RXWC_ImageViewOptions_ResizeImageIfItGreaterThenView | RXWC_ImageViewOptions_ByImageIO;
+    
+	CGSize size = CGSizeMake(120, 120);
+    UIViewContentMode contentMode = UIViewContentModeScaleAspectFill;
+
+    // ExpireTime will taken from RXWebCache.defaultTimeTermForStoreItemInCache
+
+    UIImage* img1 =  [RXWC_ReceiveImageOperation sync_imageAtURL:url1 options:options mode:contentMode size:size];;
+    UIImage* img2 =  [RXWC_ReceiveImageOperation sync_imageAtURL:url2 options:options mode:contentMode size:size];;
+
+    NSLog(@"img1: %@ | img2: %@",img1,img2);
+});

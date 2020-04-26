@@ -1,0 +1,22 @@
+NSString* url = @"https://raw.githubusercontent.com/m1a7/DemoJSONsForNetworkLayer/master/infoAboutCompany.json";
+
+[[RXWC_RIO initWithURL:url params:nil expirePeriod:RXWC_OneHourTerm
+                                           options:RXWC_RIO_Option_StoreItemsInRAMCache
+                                          progress:^(RXWC_RIO* op, RXWC_ProgressBlockStruct p) {
+    
+    float progress = (float)p.p.receviedBytes/(float)p.p.expectedToReceiveBytes;
+    NSLog(@"progress (%lld/%lld) = %f",p.p.receviedBytes,p.p.expectedToReceiveBytes,progress);
+    
+} completion:^(RXWC_CompletionBlockStruct c) {
+    
+    if (c.error){
+        NSLog(@"c.error: %@",c.error);
+    }else if (c.item.receivedData.length > 0){
+        
+        NSError* parseError;
+        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:c.item.receivedData
+                                                             options:kNilOptions
+                                                               error:&parseError];
+        NSLog(@"json: %@", json);
+    }
+}] retainOperationAndStart];

@@ -1,0 +1,6 @@
+NSError* removingError = [RXWebCache removeItemFromCacheAtURL:credoKey params:nil];
+if (removingError){
+    NSLog(@"Removing failed with error ❌: %@",removingError);
+}else {
+    NSLog(@"Removing was successful ✅");
+}

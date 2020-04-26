@@ -1,0 +1,9 @@
+RXWC_WI* fetchedWrapper = [RXWebCache fetchWrapperFromDiskAtGlobalURL:credoKey params:nil];
+if (!fetchedWrapper){
+    NSLog(@"Previously written item was not extracted  ❌");
+}else {
+    NSString* unwrappedCredo = [[NSString alloc] initWithData:fetchedWrapper.receivedData
+                                                     encoding:NSUTF8StringEncoding];
+    NSLog(@"Previously written item was successfully extracted ✅: %@",fetchedWrapper);
+    NSLog(@"unwrappedCredo: %@",unwrappedCredo);
+}

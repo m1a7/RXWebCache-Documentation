@@ -1,0 +1,18 @@
+NSString* url1 = @"https://sun9-20.userapi.com/c543109/v543109246/5a3d3/d65h8OaQx8w.jpg";
+
+RXWC_ImageViewOptions options = 
+RXWC_ImageViewOptions_ResizeImageIfItGreaterThenView | RXWC_ImageViewOptions_ByImageIO;
+
+CGSize size = CGSizeMake(120, 120);
+UIViewContentMode mode = UIViewContentModeScaleAspectFill;
+
+// ExpireTime will taken from RXWebCache.defaultTimeTermForStoreItemInCache
+
+[[RXWC_ReceiveImageOperation async_imageAtURL:url1 
+									  options:options
+                                      	 mode:mode
+                                         size:size 	                 
+ 								   completion:^(RXWC_ImgViewCompletionBlockStruct c) {
+    
+    NSLog(@"img: %@ | error: %@",c.img,c.error);
+}] retainOperationAndStart];

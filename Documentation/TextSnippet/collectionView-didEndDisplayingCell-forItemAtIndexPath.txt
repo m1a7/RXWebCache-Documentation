@@ -1,0 +1,6 @@
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell*)cell
+                                                            forItemAtIndexPath:(NSIndexPath*)indexPath
+{
+    CollectionCell* convertedCell = (CollectionCell*)cell;
+    [convertedCell.imgView cancelCachedImage];
+}

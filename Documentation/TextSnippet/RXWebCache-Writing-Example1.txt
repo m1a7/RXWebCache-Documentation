@@ -1,0 +1,12 @@
+NSString*    credo = @"Time doesn't like to be wasted.";
+NSData*       data = [credo dataUsingEncoding:NSUTF8StringEncoding];
+NSString* credoKey = @"credoKey";
+
+RXWC_WI* wrapper = [RXWC_WI initWithURL:credoKey params:nil cachedData:data expireTime:RXWC_OneMonthTerm];
+
+NSError* writingError = [RXWebCache writeWrapperToCache:wrapper];
+if (writingError){
+    NSLog(@"Writing failed with error ❌: %@",writingError);
+}else {
+    NSLog(@"Writing was successful ✅");
+}

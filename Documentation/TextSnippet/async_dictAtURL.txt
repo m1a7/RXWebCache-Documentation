@@ -1,0 +1,7 @@
+NSString* url = @"https://raw.githubusercontent.com/m1a7/DemoJSONsForNetworkLayer/master/infoAboutCompany.json";
+
+[[RXWC_ReceiveDictionaryOperation async_dictAtURL:url completion:^(RXWC_DictionaryCompletionBlockStruct c) {
+    
+ NSLog(@"json: %@ | error: %@",c.dict ,c.error);
+}] retainOperationAndStart];
+    

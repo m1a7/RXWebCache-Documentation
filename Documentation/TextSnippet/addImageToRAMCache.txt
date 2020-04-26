@@ -1,0 +1,7 @@
+UIImage*  image    = [UIImage imageNamed:@"placeholder1"];
+NSString* imageKey = @"imageKey";
+
+size_t cost = [RXWebCache memorySizeFromImage:image];
+CGSize size = CGSizeMake(100, 100);
+NSString *tommorow = [[NSDate date] dateByAddingTimeInterval:86400];
+[RXWebCache addImageToRAMCache:image atURL:imageKey atParams:nil forImageViewSize:size costInBytes:cost expireDate:tommorow];

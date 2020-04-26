@@ -1,0 +1,3 @@
+
+
+[self.imgView imgURL:url options:RXWC_ImageViewOptions_CropImageToViewBounds | RXWC_ImageViewOptions_ByImageIO];

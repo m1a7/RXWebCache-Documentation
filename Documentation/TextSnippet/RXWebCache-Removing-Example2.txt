@@ -1,0 +1,6 @@
+NSError* removingError = [RXWebCache removeWrapperFromCache:fetchedWrapper];
+if (removingError){
+    NSLog(@"Removing failed with error ❌: %@",removingError);
+}else {
+    NSLog(@"Removing was successful ✅");
+}

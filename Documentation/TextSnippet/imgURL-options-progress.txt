@@ -1,0 +1,9 @@
+RXWC_ImageViewOptions options= RXWC_ImageViewOptions_ByImageIO|RXWC_ImageViewOptions_ResizeImageIfItGreaterThenView;
+
+[cell.imgView imgURL:self.arrImg[indexPath.row] 
+			 options:options
+            progress:^(RXWC_RIO * _Nullable op, RXWC_ProgressBlockStruct p) {
+    
+     float progress = (float)p.p.receviedBytes/(float)p.p.expectedToReceiveBytes;
+     cell.progressView.progress = progress;
+}];

@@ -1,0 +1,5 @@
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSString* url= @"https://raw.githubusercontent.com/m1a7/DemoJSONsForNetworkLayer/master/infoAboutCompany.json";
+    NSDictionary* json = [RXWC_ReceiveDictionaryOperation sync_dictAtURL:jsonURL];
+    NSLog(@"json: %@",json);
+});

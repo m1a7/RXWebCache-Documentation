@@ -1,0 +1,24 @@
+
+// Progress block initialization
+void (^progressBlock) (RXWC_RIO* op, RXWC_ProgressBlockStruct p);
+
+progressBlock = ^(RXWC_RIO* op, RXWC_ProgressBlockStruct p) {
+    float progress = (float)p.p.receviedBytes/(float)p.p.expectedToReceiveBytes;
+    NSLog(@"progress: %f",progress);
+};
+
+// Options initialization
+RXWC_ImageViewOptions options = RXWC_ImageViewOptions_ByImageIO | 
+								RXWC_ImageViewOptions_ResizeImageIfItGreaterThenView;
+
+// Arguments initialization
+NSDictionary* arguments = @{ kURL                   : @"",
+                             kImgViewProgressBlock  : progressBlock,
+                             kImgViewOptions        : [NSNumber numberWithUnsignedInteger:options]
+                             };
+
+NSError* errorOfStartingCachingImage = [self.imgView imgWithArguments:arguments];
+
+if (errorOfStartingCachingImage){
+    NSLog(@"error: %@",errorOfStartingCachingImage);
+}
